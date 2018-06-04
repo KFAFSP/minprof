@@ -562,6 +562,14 @@ const unsigned StaticCounter<Name>::index = StaticCounterRegistry::register_coun
  */
 #define MINPROF_COUNTER(name)   ::minprof::StaticCounter<typestring_is(name)>::get()
 
+/** \brief Trigger an event by name.
+ *
+ * Will increase the StaticCounter called <name>.
+ *
+ * \param   name    Name string literal of the StaticCounter.
+ */
+#define MINPROF_EVENT(name)     do { ++MINPROF_COUNTER(name); } while (0)
+
 /** \brief Get a StaticCounter as a timer.
  *
  * \param   name    Name string literal of the StaticCounter.
@@ -801,6 +809,19 @@ if (::minprof::Section __section_ ## __LINE__ {MINPROF_COUNTER(name "|C"), MINPR
  *      doStuff();
  *      teardown();
  * }
+ *
+ * Time a region like this:
+ *
+ * MINPROF_TIMED("myTimer|T") {
+ *      stuff();
+ *      moreStuff();
+ * }
+ *
+ * Dump you results to a stream, file or default file like so:
+ *
+ * MINPROF_DUMP();
+ * MINPROF_DUMP("myfile.csv");
+ * MINPROF_DUMP(std::cout);
  *
  */
 
