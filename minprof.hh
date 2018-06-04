@@ -506,6 +506,19 @@ public:
         return self.m_instances[idx];
     }
 
+    /** \brief Dump all StaticCounters to the specified stream as CSV.
+     *
+     * The order in which the counters are dumped is defined by the compiler and linker, but loosely
+     * corresponds to their usage order in code.
+     *
+     * CSV format is:
+     * <name>, <value> <endl>
+     *
+     * If a counter has no name (you registered one yourself?) it gets a name made up from
+     * it's index in the registry.
+     *
+     * \param   [in,out]    out     Output stream.
+     */
     static void dump(std::ostream& out)
     {
         const auto& self = instance();
@@ -520,11 +533,18 @@ public:
             out << ", " << *self.m_instances[idx] << std::endl;
         }
     }
+    /** \brief Dump into the file with the specified name.
+     *
+     * Overwrites file contents.
+     *
+     * \param   [in]    file_name   Name of the file.
+     */
     static void dump(const char* file_name)
     {
         std::ofstream csv{file_name};
         dump(csv);
     }
+    /** \brief Dump into the "minprof.csv" file. */
     static void dump()
     {
         dump("minprof.csv");
