@@ -1,3 +1,12 @@
+/** \brief Minimal profiler implemented for C++11 and above.
+ *
+ * Requires the typestring header.
+ *
+ * \file    minprof.hh
+ * \author  Karl Friebel
+ * \date    04.06.1997
+ */
+
 #ifndef MINPROF_HH_
 #define MINPROF_HH_
 #pragma once
