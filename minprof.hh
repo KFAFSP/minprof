@@ -517,7 +517,7 @@ public:
             } else {
                 out << "counter_" << idx;
             }
-            out << ", " << self.m_instances[idx]->value() << std::endl;
+            out << ", " << *self.m_instances[idx] << std::endl;
         }
     }
     static void dump(const char* file_name)
