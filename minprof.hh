@@ -4,7 +4,7 @@
  *
  * \file    minprof.hh
  * \author  Karl Friebel
- * \date    04.06.1997
+ * \date    04.06.2018
  */
 
 #ifndef MINPROF_HH_
