@@ -1,6 +1,6 @@
 # Build the example.
 all: typestring.hh
-	$(CXX) -I . -std=c++11 -Wall -Wextra -pedantic example.cc -o example
+	$(CXX) -I . -std=c++11 -g -O3 -DNDEBUG -Wall -Wextra -pedantic example.cc -o example
 
 # Build and run the example.
 run: all
